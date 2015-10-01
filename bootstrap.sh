@@ -1,47 +1,73 @@
 #!/usr/bin/env bash
 
 apt-get update
-
-mkdir vagrant_files
-
 apt-get install -y git 
 
-git clone git://github.com/pybombs/pybombs
+git clone https://github.com/gnuradio/pybombs.git
 
-#apt-get install -y gnuradio
+sudo chown -R vagrant:vagrant pybombs
+
+cd pybombs
+# git checkout 351cff306adc1ade7ae1c7af1bca19ae8076437a
+# checkout slightly older version because they may have pulled in a bug
+
+sudo chown -R vagrant:vagrant src 
+
+git config --global --unset http.proxy
+
+dd if=/dev/zero of=/swapfile1.swap bs=1024 count=524288
+chown root:root /swapfile1.swap
+chmod 0600 /swapfile1.swap
+mkswap /swapfile1.swap
+swapon /swapfile1.swap
+echo '/swapfile1.swap none swap sw 0 0' >> /etc/fstab
+
 #cd pybombs
+cp config.defaults config.dat
+sed -i 's/\[defaults\]/\[config\]/g' config.dat
+sed -i 's/makewidth\=4/makewidth\=1/g' config.dat
+./pybombs -vf install uhd
+
+./pybombs -vf install gnuradio
+
+
+
+
 #pwd
-ls -a
-#./pybombs env
+#ls -a
+./pybombs env
 #source /home/vagrant/pybombs/gnuradio/setup_env.sh
+#cd ../
 
-git clone https://github.com/gnuradio/gnuradio.git
-mkdir $(srcdir)/build
-cd $(srcdir)/build
-cmake $(srcdir)
-make
-make test
-make install -y
+#git clone https://github.com/gnuradio/gnuradio.git
+#cmake 
+#make test
+#make install
 
-apt-get install -y libsndfile1-dev
-apt-get install -y libitpp-dev
-apt-get install -y cmake
-apt-get install -y libboost-dev libboost-system-dev libboost-thread-dev 
-apt-get install -y libcppunit-dev
+#GR-DSD
+#sudo apt-get install -y libsndfile1-dev
+#sudo apt-get install -y libitpp-dev
+#sudo apt-get install -y cmake
+#sudo apt-get install -y libboost-dev libboost-system-dev libboost-thread-dev
+#sudo apt-get install -y libcppunit-dev
 
+#git clone https://github.com/robotastic/gr-dsd.git
+#cd gr-dsd
 
-git clone https://github.com/robotastic/gr-dsd.git
-cd gr-dsd
-cmake -DCMAKE_PREFIX_PATH=/home/vagrant/gnuradio   .
-make
-make install -y
-ldconfig
+#cmake -DCMAKE_PREFIX_PATH=/home/vagrant/gnuradio -DCMAKE_MODULE_PATH=/home/vagrant/gnuradio/cmake/Modules   . 
+#make
+#sudo make install -y
+#sudo ldconfig
 
-cd ../
-./pybombs install -y gr-op25
+#cd ../
 
+#OP25 INSTALL
+#cd pybombs
+#./pybombs install -y gr-op25
+#cd ../
 
-git clone https://github.com/robotastic/trunk-recorder.git
-cd trunk-recorder
-cmake -DCMAKE_PREFIX_PATH=/home/vagrant/gnuradio    . 
-make
+#TRUNK RECORDER INSTALL
+#git clone https://github.com/robotastic/trunk-recorder.git
+#cd trunk-recorder
+#cmake -DCMAKE_PREFIX_PATH=/home/vagrant/gnuradio -DCMAKE_MODULE_PATH=/home/vagrant/gnuradio/cmake/Modules  . 
+#make
