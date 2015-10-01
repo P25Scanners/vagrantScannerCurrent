@@ -36,8 +36,8 @@ sed -i 's/makewidth\=4/makewidth\=1/g' config.dat
 #pwd
 #ls -a
 ./pybombs env
-#source /home/vagrant/pybombs/gnuradio/setup_env.sh
-#cd ../
+source /usr/local/setup_env.sh
+cd ../
 
 #git clone https://github.com/gnuradio/gnuradio.git
 #cmake 
@@ -45,29 +45,32 @@ sed -i 's/makewidth\=4/makewidth\=1/g' config.dat
 #make install
 
 #GR-DSD
-#sudo apt-get install -y libsndfile1-dev
-#sudo apt-get install -y libitpp-dev
-#sudo apt-get install -y cmake
-#sudo apt-get install -y libboost-dev libboost-system-dev libboost-thread-dev
-#sudo apt-get install -y libcppunit-dev
+sudo apt-get install -y libsndfile1-dev
+sudo apt-get install -y libitpp-dev
+sudo apt-get install -y cmake
+sudo apt-get install -y libboost-all-dev 
+#libboost-dev libboost-system-dev libboost-thread-dev
+sudo apt-get install -y libcppunit-dev
 
-#git clone https://github.com/robotastic/gr-dsd.git
-#cd gr-dsd
+git clone https://github.com/robotastic/gr-dsd.git
+cd gr-dsd
 
-#cmake -DCMAKE_PREFIX_PATH=/home/vagrant/gnuradio -DCMAKE_MODULE_PATH=/home/vagrant/gnuradio/cmake/Modules   . 
-#make
-#sudo make install -y
-#sudo ldconfig
+cmake -DCMAKE_PREFIX_PATH=/home/vagrant/pybombs/gnuradio  .
+# -DCMAKE_MODULE_PATH=/home/vagrant/gnuradio/cmake/Modules   
+make
+sudo make install
+sudo ldconfig
 
-#cd ../
+cd ../
 
 #OP25 INSTALL
-#cd pybombs
-#./pybombs install -y gr-op25
-#cd ../
+cd pybombs
+./pybombs install -vf gr-op25
+cd ../
 
 #TRUNK RECORDER INSTALL
-#git clone https://github.com/robotastic/trunk-recorder.git
-#cd trunk-recorder
-#cmake -DCMAKE_PREFIX_PATH=/home/vagrant/gnuradio -DCMAKE_MODULE_PATH=/home/vagrant/gnuradio/cmake/Modules  . 
-#make
+git clone https://github.com/robotastic/trunk-recorder.git
+cd trunk-recorder
+cmake -DCMAKE_PREFIX_PATH=/home/vagrant/pybombs/gnuradio  .
+#-DCMAKE_MODULE_PATH=/home/vagrant/gnuradio/cmake/Modules   
+make
