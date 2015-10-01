@@ -13,8 +13,11 @@ Op-25 scanner/recorder built in a virtual machine (ubuntu 14.04) with vagrant.  
 #Scanner Software 
 `git clone https://github.com/P25Scanners/vagrantScanner.git`
 
+`cd vagrantScannerCurrent`
+`vagrant up`
 
 #Current Progress
-Having Problems with cmake in trunk-recorder and gr-dsd (see bootstrap.sh (main provisioning file for vagrant) to troubleshoot this in the make process).....
+Compiled successfully with Vagrant (running Ubuntu 14.04 in a VirtualBox virtual machine) ....now we need to alter the config.json file in trunk-recorder (see the virtual machine)...
+
 
 
