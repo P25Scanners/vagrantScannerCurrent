@@ -45,12 +45,7 @@ cd ../
 #make install
 
 #GR-DSD
-sudo apt-get install -y libsndfile1-dev
-sudo apt-get install -y libitpp-dev
-sudo apt-get install -y cmake
-sudo apt-get install -y libboost-all-dev 
-#libboost-dev libboost-system-dev libboost-thread-dev
-sudo apt-get install -y libcppunit-dev
+sudo apt-get install -y libsndfile1-dev libcppunit-dev libitpp-dev cmake libboost-all-dev 
 
 git clone https://github.com/robotastic/gr-dsd.git
 cd gr-dsd
