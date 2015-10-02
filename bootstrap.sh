@@ -69,3 +69,6 @@ cd trunk-recorder
 cmake -DCMAKE_PREFIX_PATH=/home/vagrant/pybombs/gnuradio  .
 #-DCMAKE_MODULE_PATH=/home/vagrant/gnuradio/cmake/Modules   
 make
+
+sudo chown -R vagrant /home/vagrant/trunk-recorder
+sudo chmod -R u+rwx /home/vagrant/trunk-recorder

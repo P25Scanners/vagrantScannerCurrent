@@ -2,7 +2,7 @@ Op-25 scanner/recorder built in a virtual machine (ubuntu 14.04) with vagrant.  
 
 #Requirements
 ##Vagrant 
-[Vagrant download](www.vagrantup.com/downloads)
+[Vagrant download](https://www.vagrantup.com/downloads.html)
 ##VirtualBox 
 [VirtualBox for Linux](https://www.virtualbox.org/wiki/Linux_Downloads)
 [VirtualBox for Mac](http://download.virtualbox.org/virtualbox/5.0.4/VirtualBox-5.0.4-102546-OSX.dmg)
@@ -13,7 +13,7 @@ Op-25 scanner/recorder built in a virtual machine (ubuntu 14.04) with vagrant.  
 #Scanner Software 
 ```
 git clone https://github.com/P25Scanners/vagrantScanner.git
-cd vagrantScannerCurrent
+cd vagrantScanner
 vagrant up
 ```
 
