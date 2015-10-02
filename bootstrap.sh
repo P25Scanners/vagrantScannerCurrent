@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 apt-get update
-apt-get install -y git 
+apt-get upgrade -y
+apt-get install -y git gdb
 
 git clone https://github.com/gnuradio/pybombs.git
 
