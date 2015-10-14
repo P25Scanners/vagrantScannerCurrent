@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/trusty32"
   config.vm.provision :shell, path: "bootstrap.sh"
 
   # Use more RAM otherwise UHD will fail to compile
@@ -52,8 +52,8 @@ Vagrant.configure(2) do |config|
      vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-     vb.memory = "1524"
-     vb.cpus = 2
+     vb.memory = "1024"
+     vb.cpus = 1
 
   # set cpu % usage cap on host machine to prevent 100% cpu burnout-freezes 
   #  vb.customize ["modifyvm", :id, "--cpuexecutioncap", "80"]
